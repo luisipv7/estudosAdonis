@@ -21,4 +21,11 @@ export default class PostsController {
     const lstDatabyId = await Post.findBy('id', params.id)
     return lstDatabyId
   }
+
+  public async delete({ params }) {
+    const delUser = await Post.findByOrFail('id', params.id)
+    await delUser.delete()
+    return 'Deletado com sucesso!'
+  }
+
 }
